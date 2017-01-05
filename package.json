@@ -1,0 +1,33 @@
+{
+  "name": "handeled-game-console",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha 'test/**/*.js'",
+    "watchTest": "mocha --watch 'test/**/*.js'",
+    "startDev": "nodemon app.js dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YouYue123/Handheld-Game-Console.git"
+  },
+  "keywords": [
+    "vue;react;angular2"
+  ],
+  "author": "youyue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YouYue123/Handheld-Game-Console/issues"
+  },
+  "homepage": "https://github.com/YouYue123/Handheld-Game-Console#readme",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "cfenv": "^1.0.3",
+    "express": "^4.14.0"
+  },
+  "devDependency": {
+    "mocha": "^3.2.0",
+    "chai": "^4.0.0"
+  }
+}
