@@ -12,8 +12,112 @@
         <span class="r ml" />
         <span class="r ml" />
       </div>
-      <h1>Game Name</h1>
+      <h1>{{gameName}}</h1>
       <div class="view">
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <p />
+        <em />
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <p />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <block class="c" />
+        <p />
+        <block class="c" />
+        <em />
+        <div class="clear" />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <p />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <em />
+        <div class="clear" />
+        <block class="c" />
+        <p />
+        <em />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <div class="clear" />
+      </div>
+      <div class="l view">
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <p />
+        <em />
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <p />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <block class="c" />
+        <p />
+        <block class="c" />
+        <em />
+        <div class="clear" />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <p />
+        <block class="c" />
+        <block class="c" />
+        <div class="clear" />
+        <block class="c" />
+        <em />
+        <div class="clear" />
+        <block class="c" />
+        <p />
+        <em />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <div class="clear" />
+        <em />
+        <block class="c" />
+        <div class="clear" />
       </div>
     </div>
 </template>
@@ -21,18 +125,18 @@
 <script>
   export default{
     name: 'decorate',
-
+    data: function(){
+      return {
+        gameName: 'BRICK GAME'
+      }
+    },
+    components:{
+      block: require('./brick.vue')
+    }
   }
 </script>
 
 <style lang="less">
-
-  .l {
-    float: left;
-  }
-  .r{
-    float: right;
-  }
   .decorate{
     h1{
       position: absolute;

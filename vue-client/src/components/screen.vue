@@ -1,0 +1,31 @@
+
+<template>
+    <div class="screen">
+      <div class="panel" />
+    </div>
+</template>
+
+<script>
+  export default{
+    
+  }
+</script>
+
+<style lang="less">
+.screen{
+  width: 390px;
+  height: 478px;
+  border: solid 5px;
+  border-color: #987f0f #fae36c #fae36c #987f0f;
+  margin: 0 auto;
+  position: relative;
+  .panel{
+    width: 380px;
+    height: 468px;
+    margin: 0 auto;
+    background: #9ead86;
+    padding: 8px;
+    border: 2px solid #494536;
+  }
+}
+</style>
