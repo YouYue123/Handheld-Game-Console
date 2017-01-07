@@ -1,37 +1,89 @@
 <template>
-  <div v-bind:class="buttonClass">
-    <i  />
-    <span class="top" />
+  <div v-bind:class="buttonClass" v-bind:style="buttonStyle">
+    <i  v-bind:style="{height:this.size,width:this.size}"/>
+    <span v-bind:style="msgStyle"> {{this.msg}}</span>
+    <span v-bind:class="arrowClass" v-bind:style="arrowStyle" />
   </div>
 </template>
 
 <script>
-  const Direction = {
-    top: 0,
-    right: 1,
-    bottom: 2,
-    left: 3
-  }
+  const Direction = ["top","right","bottom","left"]
   export default{
-    data: function(){
-      return{
-        arrow: Direction.top,
-        arrowPosition: Direction.bottom,
-        msg: 'hello world',
-        msgPosition: Direction.right,
-        color: 'red'
+    props:{
+      size:{
+        type: String,
+        default: '100px'
+      },
+      btnColor: {
+        type: String,
+        default: 'blue'
+      },
+      arrowDirection:{
+        type: String,
+        default: 'top'
+      },
+      msg: {
+        type: String,
+        default: 'top'
+      },
+      msgPosition:{
+        type: String,
+        default: 'right'
+      },
+      arrowPosition:{
+        type: String,
+        default: 'bottom'
+      },
+      top:{
+        type: String,
+        default: '100px'
+      },
+      left:{
+        type: String,
+        default: '20px'
       }
     },
-    props:['btnColor'],
     computed: {
       buttonClass: function(){
-        return "controlButton " + this.btnColor
+        return "controlButton s1 " + this.btnColor
+      },
+      msgClass: function(){
+        return this.msgPosition
+      },
+      arrowClass: function(){
+        return this.arrowPosition + " " + this.arrowDirection + "Arrow"
+      },
+      buttonStyle: function(){
+        return {
+          top: this.top,
+          left: this.left,
+          heigth: this.size,
+          width: this.size
+        }
+      },
+      msgStyle: function(){
+        const pos = Direction.indexOf(this.msgPosition)
+        return {
+          position: "absolute",
+          fontWeight: "bold",
+          top: pos===2?this.size+'px':"35px",
+          left: pos===1?"120px":"15px"
+        }
+      },
+      arrowStyle: function(){
+        const pos = Direction.indexOf(this.arrowPosition)
+        return{
+          position: "absolute",
+          top: pos===1 || pos===3?"40px":pos===0?"-40px":"125px",
+          left: pos===0 || pos===2?"40px":pos===1?"100px":"-15px"
+        }
       }
     }
   }
 </script>
 
 <style lang="less">
+  @arrowSize: 10px;
   .background(@from, @to){
     background: (@from + @to)/2;
     background: -webkit-gradient(linear, left top, left bottom, from(@from), to(@to));
@@ -47,22 +99,41 @@
     position: absolute;
     white-space: nowrap;
     line-height: 1.6;
-    height: 50px;
-    width: 50px;
-    &.s2{
-      font-size: 16px;
+    span.topArrow{
+      width: 0;
+      height: 0;
+      border-left: @arrowSize solid transparent;
+      border-right: @arrowSize solid transparent;
+      border-bottom: 2*@arrowSize*0.866 solid black;
     }
-    span.position{
-      position: absolute;
-      top: 5px;
-      left: 102px;
+    span.bottomArrow{
+      width: 0;
+      height: 0;
+      border-left: @arrowSize solid transparent;
+      border-right: @arrowSize solid transparent;
+      border-top: 2*@arrowSize*0.866 solid black;
+    }
+    span.leftArrow{
+      width: 0;
+      height: 0;
+      border-top: @arrowSize solid transparent;
+      border-bottom: @arrowSize solid transparent;
+      border-right: 2*@arrowSize*0.866 solid black;
+    }
+    span.rightArrow{
+      width: 0;
+      height: 0;
+      border-top: @arrowSize solid transparent;
+      border-bottom: @arrowSize solid transparent;
+      border-left: 2*@arrowSize*0.866 solid black;
     }
     i{
       display: block;
       position: relative;
       border: 1px solid #000;
       border-radius: 50%;
-      height: 50px;
+      height: 100%;
+      width: 100%;
       &:before, &:after{
         content: '';
         display: block;
@@ -97,6 +168,7 @@
     &.red i{
       .background(#dc3333, #de0000);
     }
+    //3 types of button sizes definition
     &.s0 i{
       width: 160px;
       height: 160px;
@@ -107,6 +179,7 @@
       height: 100px;
     }
     &.s2 i{
+      font-size: 16px;
       width: 52px;
       height: 52px;
       &:before, &:after{
