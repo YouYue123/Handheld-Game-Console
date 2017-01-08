@@ -1,13 +1,21 @@
 
 <template>
     <div class="screen">
-      <div class="panel" />
+      <div class="panel">
+         <gamingScreen />
+         <statScreen />
+         <timingScreen />
+      </div>
     </div>
 </template>
 
 <script>
   export default{
-    
+    components: {
+      gamingScreen: require('./gamingScreen.vue'),
+      statScreen: require('./statScreen.vue'),
+      timingScreen: require('./timingScreen.vue')
+    }
   }
 </script>
 

@@ -23,11 +23,5 @@
         background: #000;
       }
     }
-    &.d{
-      border-color: #560000;
-      &:after{
-        background: #560000;
-      }
-    }
   }
 </style>
