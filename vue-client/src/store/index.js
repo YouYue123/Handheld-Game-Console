@@ -3,34 +3,35 @@ import Vuex from 'vuex'
 import {GENERATE} from './mutationType.js'
 Vue.use(Vuex)
 
-const initMatrix = []
-
-for(var i=0; i< 11;i++){
-  const tempMatrix = []
-  for(var j=0; j<22;j++){
-      tempMatrix.push(1)
+function initializeMatrix(){
+  const initMatrix = []
+  for(var i=0; i< 22;i++){
+    const tempMatrix = []
+    for(var j=0; j<11;j++){
+        tempMatrix.push(0)
+    }
+    initMatrix.push(tempMatrix)
   }
-  initMatrix.push(tempMatrix)
+  return initMatrix
 }
 
 
 const store = new Vuex.Store({
   strict: true,
   state:{
-    matrix: initMatrix
+    matrix: initializeMatrix(),
+    staticMatrix: initializeMatrix()
   },
   getters:{
 
   },
   mutations:{
     [GENERATE](state,payload){
-      switch(payload.type){
-        case 'I1':
-          console.log('generate I1')
-          const rand = Math.floor(Math.random()*7)
-          for(var i =0;i<4;i++){
-            state.matrix[0].splice(rand+i,1,0)
-          }
+      const x = payload.position[0]
+      const y = payload.position[1]
+      state.matrix = initializeMatrix()
+      for(var i=0;i<payload.matrix.length;i++){
+        state.matrix[x+i].splice.apply(state.matrix[x+i],[y,payload.matrix[i].length].concat(payload.matrix[i]))
       }
     }
   }

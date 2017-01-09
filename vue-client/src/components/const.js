@@ -1,4 +1,4 @@
-const blockShape = {
+export const blockShape = {
   I1: [
     [1,1,1,1]
   ],
@@ -20,4 +20,4 @@ const blockShape = {
   ]
 }
 
-const blockType = Object.keys(blockShape)
+export const blockType = Object.keys(blockShape)

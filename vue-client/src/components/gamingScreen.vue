@@ -1,12 +1,14 @@
 <template>
     <div class="gamingScreen">
         <p v-for="subMatrix in matrix">
-          <brick v-for="item in subMatrix" v-bind:class="item===1?'none':'c'"/>
+          <brick v-for="item in subMatrix" v-bind:class="item===0?'none':'c'"/>
         </p>
     </div>
 </template>
 
 <script>
+  import {blockType,blockShape} from './const.js'
+  import Block from './block.js'
   export default{
     name: 'gamingScreen',
     components:{
@@ -18,12 +20,20 @@
       }
     },
     methods: {
-      generate: function(type){
-        this.$store.commit('GENERATE',{type:type})
+      generate: function(metaDescription){
+        this.$store.commit('GENERATE',metaDescription)
       }
     },
     mounted: function(){
-       this.generate('I1');
+       const option = {
+         shape: blockType[0],
+         position: [-1,0],
+         rotationIndex: 0
+       }
+       const block = new Block(option)
+      //  setInterval(()=>{
+      //    this.generate(block.fall())
+      //  },1000)
     }
   }
 </script>
