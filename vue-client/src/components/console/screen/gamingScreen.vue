@@ -7,33 +7,20 @@
 </template>
 
 <script>
-  import {blockType,blockShape} from './const.js'
-  import Block from './block.js'
+  import Tetris from '../../games/tetris'
   export default{
     name: 'gamingScreen',
     components:{
-      brick: require('./brick.vue')
+      brick: require('../../helpers/brick.vue')
     },
     computed: {
       matrix: function(){
-        return this.$store.state.matrix
-      }
-    },
-    methods: {
-      generate: function(metaDescription){
-        this.$store.commit('GENERATE',metaDescription)
+        return this.$store.state.resultMatrix
       }
     },
     mounted: function(){
-       const option = {
-         shape: blockType[0],
-         position: [-1,0],
-         rotationIndex: 0
-       }
-       const block = new Block(option)
-      //  setInterval(()=>{
-      //    this.generate(block.fall())
-      //  },1000)
+      const game = new Tetris(this.$store)
+      game.run()
     }
   }
 </script>

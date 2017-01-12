@@ -6,7 +6,6 @@
     </div>
     <handle />
   </div>
-
 </template>
 
 <script>
@@ -22,14 +21,51 @@
       }
     },
     components: {
-      decorate: require('./decorate.vue'),
-      screen: require('./screen.vue'),
-      handle: require('./handle.vue')
+      decorate: require('./decorator/index.vue'),
+      screen: require('./screen/index.vue'),
+      handle: require('./handle/index.vue')
     }
   }
 </script>
 
 <style lang="less">
+
+html,
+body{
+  background: #009688;
+  padding: 0;margin:0;
+  font: 20px/1 "HanHei SC","PingHei","PingFang SC","STHeitiSC-Light","Helvetica Neue","Helvetica","Arial",sans-serif;
+  overflow: hidden;
+  cursor: default;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: 'liga', 'kern';
+  direction: ltr;
+  text-align: left;
+
+}
+:global{
+  .r{
+    float: right;
+  }
+  .l{
+    float:left;
+  }
+  .clear{
+    clear: both;
+  }
+  .bg{
+    background:url('//img.alicdn.com/tps/TB1qq7kNXXXXXacXFXXXXXXXXXX-400-186.png') no-repeat;
+    overflow:hidden;
+  }
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 #console{
   width: 640px;

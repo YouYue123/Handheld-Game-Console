@@ -13,11 +13,10 @@ export default class Block {
     console.log('moveRight')
   }
   fall(){
-    console.log('fall')
     this.position[0] += 1
     return{
       position: [this.position[0],this.position[1]],
-      matrix: blockShape.I1,
+      matrix: this.shape,
       rotationIndex: this.rotationIndex
     }
   }

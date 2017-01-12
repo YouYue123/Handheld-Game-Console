@@ -4,7 +4,6 @@
       <controlButton btnColor='blue' msg='QUICK LEVELS-' msgPosition='bottom' arrowPosition='top' arrowDirection='bottom' top='280px' left='80px'/>
       <controlButton btnColor='blue' msg='SPEED-' msgPosition='bottom' arrowPosition='right' arrowDirection='left' top='175px' left='0px'/>
       <controlButton btnColor='blue' msg='SPEED+' msgPosition='bottom' arrowPosition='left' arrowDirection='right' top='175px' left='160px'/>
-
       <controlButton btnColor='blue' msg='Rotate Direction' msgPosition='bottom' arrowDirection='none' top='155px' left='400px' size='160px'/>
     </div>
 </template>

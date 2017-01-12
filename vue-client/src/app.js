@@ -1,6 +1,5 @@
 import Vue from 'vue'
-import Console from './components/console.vue'
-import './assets/console.less'
+import Console from './components/console/index.vue'
 import store from './store'
 const app = new Vue({
   el: '#console',

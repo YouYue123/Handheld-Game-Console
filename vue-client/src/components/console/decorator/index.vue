@@ -131,7 +131,7 @@
       }
     },
     components:{
-      block: require('./brick.vue')
+      block: require('../../helpers/brick.vue')
     }
   }
 </script>
