@@ -22,36 +22,56 @@ const store = new Vuex.Store({
   state:{
     staticMatrix: initializeMatrix(),
     resultMatrix: initializeMatrix(),
-    nextOne: true
+    nextOne: true,
+    gameOver: false
   },
   mutations:{
     [GENERATE](state,payload){
       const x = payload.position[0]
       const y = payload.position[1]
       const matrix = payload.matrix
-      let setStatic = false
-      for(let i=0;i<matrix.length;i++){
-        for(let j=0;j<matrix[i].length;j++){
-          if( (matrix[i][j] == 1 && state.staticMatrix[i+x][j+y] == 1) || x>=height){
-              setStatic = true
-          }
+      console.log(payload)
+      let setStatic = isConflict(state.staticMatrix,matrix,x,y)
+      if(setStatic == true){
+        if( isGameOver(matrix,x-1) == true){
+          console.log('fucking gameOver Stupid Pig')
+        }
+        else{
+          setMatrix(state.staticMatrix,matrix,x-1,y)
+          // setMatrix(state.resultMatrix,state.staticMatrix,0,0)
+          state.nextOne = true
         }
       }
-      if(setStatic == true){
-        setMatrix(state.staticMatrix,matrix,x,y)
-        nextOne = true
+      else{
+        setMatrix(state.resultMatrix,state.staticMatrix,0,0)
+        setMatrix(state.resultMatrix,matrix,x,y)
+        state.nextOne = false
       }
-      setMatrix(state.resultMatrix,state.staticMatrix,0,0)
-      setMatrix(state.resultMatrix,matrix,x,y)
-      // for(let i=0;i<matrix.length;i++){
-      //   for(let j=0;j<matrix[i].length;j++){
-      //     Vue.set(state.resultMatrix[i+x],j+y,matrix[i][j])
-      //   }
-      // }
 
     }
   }
 })
+
+function isGameOver(matrix,x){
+  const height = matrix.length
+  if(x + height == 0){
+    return true
+  }
+  else{
+    return false
+  }
+}
+
+function isConflict(ori,target,x,y){
+  for(let i=0;i<target.length;i++){
+    for(let j=0;j<target[i].length;j++){
+      if( x >= height || (target[i][j] == 1 && ori[i+x][j+y] == 1)){
+          return true
+      }
+    }
+  }
+  return false
+}
 
 function setMatrix(ori,target,x,y){
   for(let i=0;i<target.length;i++){
